@@ -31,6 +31,8 @@ export const useProject = (id: string) => {
         .single();
 
       if (error) throw error;
+      console.log('data', data)
+    
       return data;
     },
     enabled: !!id,

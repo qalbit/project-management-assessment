@@ -1,6 +1,6 @@
 'use client';
 
-import { redirect, useParams, useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { useAuth } from '@/context/auth-context';
 import { useTasks, useDeleteTask } from '@/hooks/useTasks';
 import { ColumnDef } from '@tanstack/react-table';
@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Task } from '@/types/database';
 import { useState } from 'react';
 import { TaskForm } from '@/components/task-form';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { useProject } from '@/hooks/useProjects';
 import { ProtectedRoute } from '@/components/protected-route';
 
@@ -95,6 +95,8 @@ export default function TaskManagementPage() {
 
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogContent>
+            <DialogTitle title='Create Task'>Create Task</DialogTitle>
+
             <TaskForm
               projectId={projectId as string}
               onSuccess={() => {

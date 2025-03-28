@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { getTasks, createTask, updateTask, deleteTask } from '@/services/task-service';
+import { createTask, updateTask, deleteTask } from '@/services/task-service';
 import { toast } from 'react-hot-toast';
 import { Task } from '@/types/database';
 import { supabase } from '@/lib/supabase/client';

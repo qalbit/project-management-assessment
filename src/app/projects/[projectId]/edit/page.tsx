@@ -11,23 +11,27 @@ export default function ProjectEditPage() {
   const { data: project } = useProject(projectId as string);
   const router = useRouter();
 
-  if (!project) {
-    router.push('/projects');
-  }
-
   return (
     <ProtectedRoute>
-      <div className="container mx-auto p-10">
-        <h1 className="text-2xl font-bold mb-6">Edit Project</h1>
-        <ProjectForm
-          project={project}
-          userId={project.user_id}
-          onSuccess={() => {
-            toast.success('Project updated successfully');
-            router.push('/projects');
-          }}
-        />
-      </div>
+      {project ? 
+        <>
+          <div className="container mx-auto p-10">
+            <h1 className="text-2xl font-bold mb-6">Edit Project</h1>
+            <ProjectForm
+              project={project}
+              userId={project.user_id}
+              onSuccess={() => {
+                toast.success('Project updated successfully');
+                router.push('/projects');
+              }}
+            />
+          </div>
+        </> 
+        : 
+        <>
+          <p>Loading...</p>
+        </> 
+      }
     </ProtectedRoute>
   );
 }

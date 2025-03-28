@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Project } from '@/types/database';
 import { useState } from 'react';
 import { ProjectForm } from '@/components/project-form';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { ProtectedRoute } from '@/components/protected-route';
 
 const columns: ColumnDef<Project>[] = [
@@ -89,6 +89,7 @@ export default function ProjectsPage() {
 
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogContent>
+            <DialogTitle className='' title='Create Project'>Create Project</DialogTitle>
             <ProjectForm
               userId={user.id}
               onSuccess={() => {

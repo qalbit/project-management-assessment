@@ -3,19 +3,21 @@
 import { useParams, useRouter } from 'next/navigation';
 import { useTask } from '@/hooks/useTasks';
 import { TaskForm } from '@/components/task-form';
-import { ProtectedRoute } from '@/components/protected-route';
 
 export default function TaskEditPage() {
   const { projectId, taskId } = useParams();
   const { data: task } = useTask(taskId as string);
+
+  console.log('task =>', task)
   const router = useRouter();
 
   if (!task) {
-    router.push(`/projects/${projectId}`);
+    console.log(task)
+    // router.push(`/projects/${projectId}`);
   }
 
   return (
-    <ProtectedRoute>
+    // <ProtectedRoute>
       <div className="container mx-auto p-10">
         <h1 className="text-2xl font-bold mb-6">Edit Task</h1>
         <TaskForm
@@ -26,6 +28,6 @@ export default function TaskEditPage() {
           }}
         />
       </div>
-    </ProtectedRoute>
+    // </ProtectedRoute>
   );
 }
